@@ -1,5 +1,7 @@
 package com.driver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -10,10 +12,12 @@ public class Reservation {
     private int id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn
     private User user;
 
     @ManyToOne
+    @JsonIgnore //many wali side jsonignore, bidirectional so to stop infinite looping add this annotation in every child class
     @JoinColumn
     private Spot spot;
 
